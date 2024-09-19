@@ -143,10 +143,11 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 // 01 - DESTRUCTING OBJECTS AND ARRAYS
 
 // get the title and author of a certain book
-const book = getBook(2);
+const book = getBook(3);
 book;
 
 // const title = book.title;
@@ -225,9 +226,45 @@ console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || 'NOT TRANSLATED';
 spanishTranslation;
 
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || 'no data';
-countWrong;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || 'no data';
+// countWrong;
 
-const count = book.reviews.librarything.reviewsCount ?? 'no data';
-count;
+// const count = book.reviews.librarything.reviewsCount ?? 'no data';
+// count;
+
+// 07 - Optional Chaining
+function getTotalReviewCount(book) {
+  const goodreads = book?.reviews?.goodreads?.reviewsCount;
+  const librarything = book?.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
+*/
+
+// 08 - The Array map Method
+
+function getTotalReviewCount(book) {
+  const goodreads = book?.reviews?.goodreads?.reviewsCount;
+  const librarything = book?.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const books = getBooks();
+books;
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+// Array with all the titles
+const titles = books.map((book) => book.title);
+titles;
+
+// Only get the essential data from the book object
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
