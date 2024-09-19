@@ -146,7 +146,7 @@ function getBook(id) {
 // 01 - DESTRUCTING OBJECTS AND ARRAYS
 
 // get the title and author of a certain book
-const book = getBook(1);
+const book = getBook(2);
 book;
 
 // const title = book.title;
@@ -206,3 +206,28 @@ console.log(`${title} has ${pagesRange} pages.`);
 //const getYear = (str) => str.split('-')[0];  (This has been moved above.)
 
 console.log(getYear(publicationDate));
+
+// 06 - Short-Circuiting And Logical Operators: &&, ||, ??
+console.log(true && 'Some string');
+console.log(false && 'Some string');
+console.log(hasMovieAdaptation && 'This book has a movie');
+
+// falsy: 0, '', null, undefined
+console.log('Ronan' && 'Some string');
+console.log(0 && 'Some string');
+console.log(hasMovieAdaptation && 'This book has a movie');
+
+console.log(true || 'Some string');
+console.log(false || 'Some string');
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || 'NOT TRANSLATED';
+spanishTranslation;
+
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || 'no data';
+countWrong;
+
+const count = book.reviews.librarything.reviewsCount ?? 'no data';
+count;
