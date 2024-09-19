@@ -184,13 +184,25 @@ const updatedBook = {
 };
 updatedBook;
 
+const getYear = (str) => str.split('-')[0];
+
 // 03 - TEMPLATE LITERALS
-const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-}. The book has${hasMovieAdaptation ? '' : ' not'} been adapted as a movie.`;
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has${hasMovieAdaptation ? '' : ' not'} been adapted as a movie.`;
 summary;
 
 // 04 - TERNARIES INSTEAD OF IF/ELSE STATEMENTS
 const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
 pagesRange;
 console.log(`${title} has ${pagesRange} pages.`);
+
+// 05 - ARROW FUNCTIONS
+
+// function getYear(str) {
+//   return str.split('-')[0];
+// }
+
+//const getYear = (str) => str.split('-')[0];  (This has been moved above.)
+
+console.log(getYear(publicationDate));
