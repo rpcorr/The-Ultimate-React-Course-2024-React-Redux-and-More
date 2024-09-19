@@ -66,7 +66,7 @@ const data = [
     publicationDate: '1965-01-01',
     author: 'Frank Herbert',
     genres: ['science fiction', 'novel', 'adventure'],
-    hasMovieAdaptation: true,
+    hasMovieAdaptation: false,
     pages: 658,
     translations: {
       spanish: '',
@@ -268,3 +268,21 @@ const essentialData = books.map((book) => ({
   reviewsCount: getTotalReviewCount(book),
 }));
 essentialData;
+
+// 09 - The Array filter Method
+
+// Create an array of books with more than 500 pages
+const longBooks = books.filter((book) => book.pages > 500);
+longBooks;
+
+// Create an array of books with more than 500 pages and has a movie adaptation
+// Create an array of books with more than 500 pages
+const longBooksWithMovies = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovies;
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes('adventure'))
+  .map((book) => book.title);
+adventureBooks;
