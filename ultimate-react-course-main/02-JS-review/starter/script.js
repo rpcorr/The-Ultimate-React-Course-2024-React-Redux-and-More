@@ -143,10 +143,10 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// DESTRUCTING OBJECTS AND ARRAYS
+// 01 - DESTRUCTING OBJECTS AND ARRAYS
 
 // get the title and author of a certain book
-const book = getBook(2);
+const book = getBook(1);
 book;
 
 // const title = book.title;
@@ -166,3 +166,20 @@ console.log(author, title, pages, publicationDate, genres, hasMovieAdaptation);
 const [primaryGenre, secondaryGenre] = genres;
 primaryGenre;
 secondaryGenre;
+
+// 02 - REST/SPREAD OPERATOR
+const [primaryGenreRest, secondaryGenreRest, ...otherGenres] = genres;
+console.log(primaryGenreRest, secondaryGenreRest, otherGenres);
+
+// creating a new array with all the genres, but add a new one to the end.
+const newGenres = [...genres, 'epic fantasy'];
+newGenres;
+
+const updatedBook = {
+  ...book,
+  // adding a new property
+  moviePublicationDate: '2001-12-19',
+  // overriding an existing property
+  pages: 1210,
+};
+updatedBook;
