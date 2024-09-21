@@ -14,6 +14,7 @@ root.render(
 );
 
 // React before version 18
-// React.render(<App />);
+// ReactDOM.render(<App />, document.getElementById('root'));
+
 // and import ReactDOM from 'react-dom/client'; becomes
 // import ReactDOM from 'react-dom';
