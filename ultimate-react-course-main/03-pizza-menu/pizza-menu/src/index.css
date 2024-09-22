@@ -57,7 +57,7 @@ body {
   display: block;
   content: '';
   height: 3px;
-  width: 12rem;
+  width: 4rem;
   background-color: #edc84b;
   position: absolute;
   top: calc(50% - 1px);
@@ -147,6 +147,7 @@ body {
 .pizza.sold-out img {
   filter: grayscale();
   opacity: 0.8;
+  -webkit-filter: grayscale();
 }
 
 /* *************** */
@@ -172,6 +173,10 @@ body {
   padding: 1.4rem 3.2rem;
   cursor: pointer;
   transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
 }
 
 .btn:hover {
