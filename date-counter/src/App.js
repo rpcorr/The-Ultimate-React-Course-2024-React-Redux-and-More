@@ -13,6 +13,11 @@ function Counter() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
 
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
+
   const today = new Date();
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   today.setDate(today.getDate() + count);
@@ -20,14 +25,24 @@ function Counter() {
   return (
     <div>
       <div>
-        <button onClick={() => setStep((c) => c - 1)}>-</button>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+
         <span>Step: {step}</span>
-        <button onClick={() => setStep((c) => c + 1)}>+</button>
       </div>
 
       <div>
         <button onClick={() => setCount((c) => c - step)}>-</button>
-        <span>Count: {count}</span>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
 
@@ -41,6 +56,12 @@ function Counter() {
         </span>
         <span>{today.toLocaleDateString('en-US', options)}</span>
       </p>
+
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      ) : null}
     </div>
   );
 }
