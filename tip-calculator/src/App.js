@@ -1,68 +1,71 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [howMuch, setHowMuch] = useState('');
+  return (
+    <div className="App">
+      <h1>Tip Calculator</h1>
+      <TipCalculator />
+    </div>
+  );
+}
+
+function TipCalculator() {
+  const [bill, setBill] = useState('');
   const [enjoyedIt1, setEnjoyedIt1] = useState(0);
   const [enjoyedIt2, setEnjoyedIt2] = useState(0);
 
-  const tip = (howMuch * ((enjoyedIt1 + enjoyedIt2) / 2)) / 100;
+  const tip = bill * ((enjoyedIt1 + enjoyedIt2) / 2 / 100);
 
   function handleReset() {
-    setHowMuch('');
+    setBill('');
     setEnjoyedIt1(0);
     setEnjoyedIt2(0);
 
-    document.getElementById('howMuch').focus();
+    document.getElementById('bill').focus();
   }
 
   return (
     <div>
-      <BillTotal howMuch={howMuch} value={howMuch} onSetHowMuch={setHowMuch} />
-      <EnjoyedItHowMuch
-        who="me"
-        enjoyedIt={enjoyedIt1}
-        onSelect={setEnjoyedIt1}
-      />
-      <EnjoyedItHowMuch
-        who="friend"
-        enjoyedIt={enjoyedIt2}
-        onSelect={setEnjoyedIt2}
-      />
-
-      {howMuch > 0 && (
+      <BillInput bill={bill} onSetBill={setBill} />
+      <SelectPercentage enjoyIt={enjoyedIt1} onSelect={setEnjoyedIt1}>
+        How did you like the service?
+      </SelectPercentage>
+      <SelectPercentage enjoyIt={enjoyedIt2} onSelect={setEnjoyedIt2}>
+        How did your friend like the service?
+      </SelectPercentage>
+      {bill > 0 && (
         <>
-          <Result howMuch={howMuch} tip={tip} />
-          <Button label="Reset" onReset={handleReset} />
+          <Output bill={bill} tip={tip} />
+          <Reset onReset={handleReset} />
         </>
       )}
     </div>
   );
 }
 
-function BillTotal({ howMuch, onSetHowMuch }) {
+function BillInput({ bill, onSetBill }) {
   return (
-    <p>
-      How much was the bill?
+    <div>
+      How much was the bill?{' '}
       <input
         type="text"
-        id="howMuch"
-        name="howMuch"
-        value={howMuch}
-        onChange={(e) => onSetHowMuch(Number(e.target.value))}
+        id="bill"
+        name="bill"
+        placeholder="Bill value"
+        value={bill}
+        onChange={(e) => onSetBill(Number(e.target.value))}
       ></input>
-    </p>
+    </div>
   );
 }
 
-function EnjoyedItHowMuch({ who, enjoyedIt, onSelect }) {
+function SelectPercentage({ children, enjoyIt, onSelect }) {
   return (
-    <p>
-      {who === 'me' ? 'How did you' : 'How did your friend'} like the service?
-      &nbsp;&nbsp;
+    <div>
+      <label>{children} </label>
       <select
-        id="yourGrade"
-        name="yourGrade"
-        value={enjoyedIt}
+        name="service"
+        value={enjoyIt}
         onChange={(e) => onSelect(Number(e.target.value))}
       >
         <option value="0">Dissatisfied (0%)</option>
@@ -70,18 +73,18 @@ function EnjoyedItHowMuch({ who, enjoyedIt, onSelect }) {
         <option value="10">It was good (10%)</option>
         <option value="20">Absolutely amazing! (20%)</option>
       </select>
-    </p>
+    </div>
   );
 }
 
-function Result({ howMuch, tip }) {
+function Output({ bill, tip }) {
   return (
     <h2>
-      You pay ${howMuch + tip} (${howMuch} + ${tip} tip)
+      You pay ${bill + tip} (${bill} + ${tip} tip)
     </h2>
   );
 }
 
-function Button({ label, onReset }) {
-  return <button onClick={onReset}>&nbsp;{label}&nbsp;</button>;
+function Reset({ onReset }) {
+  return <button onClick={onReset}>Reset</button>;
 }
