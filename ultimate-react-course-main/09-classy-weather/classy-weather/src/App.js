@@ -27,9 +27,11 @@ function convertToFlag(countryCode) {
 }
 
 function formatDay(dateStr) {
+  const date = new Date(dateStr);
+  date.setDate(date.getDate() + 1); // Go ahead one day
   return new Intl.DateTimeFormat('en', {
     weekday: 'short',
-  }).format(new Date(dateStr));
+  }).format(date);
 }
 
 class App extends React.Component {
