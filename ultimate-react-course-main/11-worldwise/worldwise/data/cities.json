@@ -35,42 +35,6 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
-    },
-    {
-      "cityName": "Oshawa",
-      "country": "Canada",
-      "emoji": "🇨🇦",
-      "date": "2025-09-10T20:56:56.543Z",
-      "notes": "TEST",
-      "position": {
-        "lat": "43.91372326852401",
-        "lng": "-78.88183593750001"
-      },
-      "id": 98443198
-    },
-    {
-      "cityName": "Area F (West Howe Sound)",
-      "country": "Canada",
-      "emoji": "🇨🇦",
-      "date": "2025-09-10T21:12:13.925Z",
-      "notes": "Testing",
-      "position": {
-        "lat": "49.56797785892715",
-        "lng": "-123.55224609375001"
-      },
-      "id": 98443199
-    },
-    {
-      "cityName": "Edmonton",
-      "country": "Canada",
-      "emoji": "🇨🇦",
-      "date": "2025-09-10T21:17:13.096Z",
-      "notes": "test",
-      "position": {
-        "lat": "53.48804553605622",
-        "lng": "-113.40087890625001"
-      },
-      "id": 98443200
     }
   ]
 }
