@@ -10,16 +10,15 @@ function App() {
     <div>
       <h1>🏦 The React-Redux Bank ⚛️</h1>
       {fullName === '' ? (
-      <CreateCustomer />
+        <CreateCustomer />
       ) : (
-      <>
-      <Customer />
-      <AccountOperations />
-      <BalanceDisplay />
-      </>
+        <>
+          <Customer />
+          <AccountOperations />
+          <BalanceDisplay />
+        </>
       )}
     </div>
-    
   );
 }
 
