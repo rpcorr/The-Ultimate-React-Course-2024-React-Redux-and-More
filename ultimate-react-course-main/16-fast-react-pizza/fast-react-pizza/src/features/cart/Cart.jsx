@@ -19,7 +19,7 @@ function Cart() {
 
       <h2 className='text-xl font-semibold mt-7'>Your cart, {username}</h2>
 
-      <ul className='mt-3 border-b divide-y divide-stone-200 '>{cart.map(item=><CartItem item={item} key={item.key} />)}</ul>
+      <ul className='mt-3 border-b divide-y divide-stone-200 '>{cart.map(item=><CartItem item={item} key={item.id} />)}</ul>
 
       <div className='mt-6 space-x-2'>
         <Button to="/order/new" type="primary">Order pizzas</Button>
