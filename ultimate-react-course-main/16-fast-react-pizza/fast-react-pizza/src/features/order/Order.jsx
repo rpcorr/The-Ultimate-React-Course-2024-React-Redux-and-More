@@ -10,6 +10,7 @@ import {
   formatCurrency,
   formatDate,
 } from '../../utils/helpers';
+import UpdateOrder from './UpdateOrder';
 
 function Order() {
   const order = useLoaderData();
@@ -71,8 +72,13 @@ function Order() {
       <div className='px-6 py-5 space-y-2 bg-stone-200'>
         <p className='text-sm font-medium text-stone-600'>Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p className='text-sm font-medium text-stone-600'>Price priority: {formatCurrency(priorityPrice)}</p>}
-        <p className='font-bold'>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
+        <p className='font-bold'>
+          To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
+          </p>
       </div>
+
+       {!priority && <UpdateOrder order={order} />}
+
     </div>
   );
 }
