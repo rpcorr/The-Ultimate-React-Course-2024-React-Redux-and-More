@@ -8,7 +8,7 @@ import Textarea from '../../ui/Textarea';
 import FormRow from '../../ui/FormRoW';
 
 import { useCreateCabin } from './useCreateCabin';
-import { useEditCabin } from './useEditCabin';
+import { useEditCabin } from './useUpdateCabin';
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { isCreating, createCabin } = useCreateCabin();
